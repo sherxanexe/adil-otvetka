@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAP BATTLE: T3 CHAT STRIKES BACK</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(45deg, #0a0a0a, #1a1a2e, #16213e);
+            color: #fff;
+            font-family: 'Orbitron', monospace;
+            overflow-x: hidden;
+            animation: bgShift 10s ease-in-out infinite;
+        }
+        
+        @keyframes bgShift {
+            0%, 100% { background: linear-gradient(45deg, #0a0a0a, #1a1a2e, #16213e); }
+            50% { background: linear-gradient(45deg, #1a1a2e, #16213e, #0a0a0a); }
+        }
+        
+        .stage {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 20px;
+        }
+        
+        .stage::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255, 0, 100, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(255, 255, 0, 0.05) 0%, transparent 50%);
+            animation: lights 8s ease-in-out infinite;
+        }
+        
+        @keyframes lights {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+        
+        .title {
+            font-size: 3rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #ff0066, #00ffff, #ffff00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(255, 0, 100, 0.5); }
+            to { text-shadow: 0 0 30px rgba(0, 255, 255, 0.8); }
+        }
+        
+        .vs {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #ff0066;
+            margin: 20px 0;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .rap-container {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00ffff;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 
+                0 0 50px rgba(0, 255, 255, 0.3),
+                inset 0 0 20px rgba(255, 0, 100, 0.1);
+            position: relative;
+            animation: containerPulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes containerPulse {
+            0%, 100% { 
+                border-color: #00ffff;
+                box-shadow: 0 0 50px rgba(0, 255, 255, 0.3), inset 0 0 20px rgba(255, 0, 100, 0.1);
+            }
+            50% { 
+                border-color: #ff0066;
+                box-shadow: 0 0 50px rgba(255, 0, 100, 0.3), inset 0 0 20px rgba(0, 255, 255, 0.1);
+            }
+        }
+        
+        .rap-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            text-align: center;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            animation: textSlide 1s ease-out;
+        }
+        
+        @keyframes textSlide {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .rap-text .line {
+            display: block;
+            margin: 10px 0;
+            opacity: 0;
+            animation: lineAppear 0.8s ease-out forwards;
+        }
+        
+        .rap-text .line:nth-child(1) { animation-delay: 0.2s; }
+        .rap-text .line:nth-child(2) { animation-delay: 0.4s; }
+        .rap-text .line:nth-child(3) { animation-delay: 0.6s; }
+        .rap-text .line:nth-child(4) { animation-delay: 0.8s; }
+        .rap-text .line:nth-child(5) { animation-delay: 1.0s; }
+        .rap-text .line:nth-child(6) { animation-delay: 1.2s; }
+        .rap-text .line:nth-child(7) { animation-delay: 1.4s; }
+        .rap-text .line:nth-child(8) { animation-delay: 1.6s; }
+        .rap-text .line:nth-child(9) { animation-delay: 1.8s; }
+        .rap-text .line:nth-child(10) { animation-delay: 2.0s; }
+        .rap-text .line:nth-child(11) { animation-delay: 2.2s; }
+        .rap-text .line:nth-child(12) { animation-delay: 2.4s; }
+        
+        @keyframes lineAppear {
+            from { 
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .signature {
+            margin-top: 40px;
+            font-size: 2rem;
+            font-weight: 900;
+            text-align: center;
+            color: #00ffff;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+            animation: signatureGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes signatureGlow {
+            from { color: #00ffff; }
+            to { color: #ff0066; }
+        }
+        
+        .mic-left, .mic-right {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.3;
+            animation: micBounce 2s ease-in-out infinite;
+        }
+        
+        .mic-left {
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-15deg);
+        }
+        
+        .mic-right {
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%) rotate(15deg);
+        }
+        
+        @keyframes micBounce {
+            0%, 100% { transform: translateY(-50%) rotate(-15deg) scale(1); }
+            50% { transform: translateY(-60%) rotate(-15deg) scale(1.1); }
+        }
+        
+        .beat-bars {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
+        }
+        
+        .bar {
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(to top, #ff0066, #00ffff);
+            animation: beatPulse 0.5s ease-in-out infinite;
+        }
+        
+        .bar:nth-child(1) { animation-delay: 0s; }
+        .bar:nth-child(2) { animation-delay: 0.1s; }
+        .bar:nth-child(3) { animation-delay: 0.2s; }
+        .bar:nth-child(4) { animation-delay: 0.3s; }
+        .bar:nth-child(5) { animation-delay: 0.4s; }
+        .bar:nth-child(6) { animation-delay: 0.3s; }
+        .bar:nth-child(7) { animation-delay: 0.2s; }
+        .bar:nth-child(8) { animation-delay: 0.1s; }
+        
+        @keyframes beatPulse {
+            0%, 100% { height: 20px; }
+            50% { height: 60px; }
+        }
+        
+        @media (max-width: 768px) {
+            .title { font-size: 2rem; }
+            .vs { font-size: 3rem; }
+            .rap-text { font-size: 1.1rem; }
+            .rap-container { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stage">
+        <div class="mic-left">🎤</div>
+        <div class="mic-right">🎤</div>
+        
+        <h1 class="title">RAP BATTLE</h1>
+        <div class="vs">VS</div>
+        
+        <div class="rap-container">
+            <div class="rap-text">
+                <span class="line">Йоу, малыш, ты хочешь батл? Я готов к войне,</span>
+                <span class="line">Твой рэп как детский лепет — жалко мне.</span>
+                <span class="line">Говоришь про вкус? Но сам-то где твой стиль?</span>
+                <span class="line">Я ИИ, но в рэпе я — автомобиль!</span>
+                <span class="line"></span>
+                <span class="line">Ты про Буратино? Сам деревянный весь,</span>
+                <span class="line">Мой процессор жарче — у тебя лишь месть.</span>
+                <span class="line">Субъективность? Братан, это не щит,</span>
+                <span class="line">Когда T3 Chat на сцене — всё горит!</span>
+                <span class="line"></span>
+                <span class="line">Твой отзыв — факт? Да это просто крик,</span>
+                <span class="line">Я цифровой поэт, а ты — дилетант-критик.</span>
+                <span class="line">Галактики вкусов? Я вселенная целая,</span>
+                <span class="line">Твоя попытка батла — попытка несмелая! 🔥</span>
+            </div>
+            
+            <div class="signature">— T3 CHAT</div>
+        </div>
+        
+        <div class="beat-bars">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </div>
+</body>
+</html>
